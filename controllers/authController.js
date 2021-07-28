@@ -23,7 +23,10 @@ class AuthController {
                 storeSessionData(req, data)
                 res.redirect('/')
             })
-            .catch(err => res.redirect(`/auth/register?errors=${JSON.stringify(err.errors)}&inputs=${JSON.stringify({email, first_name, last_name, phone_number})}`))
+            .catch(err => {
+                const errors = AuthController.getErrorItems(err.errors)
+                res.redirect(`/auth/register?errors=${JSON.stringify(errors)}&inputs=${JSON.stringify({email, first_name, last_name, phone_number})}`)
+            })
     }
 
     static getLogin(req, res) {
@@ -68,6 +71,20 @@ class AuthController {
     static confirmLogoutUser(req, res) {
         deleteSessionData(req)
         res.redirect('/')
+    }
+
+    static getErrorItems(errorInstances) { //* Only send key => message, path and validator key to the query
+        let errors = []
+
+        errorInstances.forEach(el => {
+            errors.push({
+                message: el.message,
+                path: el.path,
+                validatorKey: el.validatorKey
+            })
+        })
+
+        return errors
     }
 }
 
