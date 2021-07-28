@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light" id="actioNavbar">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">Act.io</a>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <% if(!sessionInfo.isLoggedIn) { %>
+            <li class="nav-item">
+                <a class="nav-link" href="/gettingstarted">What is <span class="actio-text">Act.io</span>?</a>
+            </li>
+        <% } else { %>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Disabled</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/auth/logout">Logout</a>
+            </li>
+        <% } %>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+        <% if(sessionInfo.isLoggedIn) { %>
+            <button class="btn btn-info my-2 my-sm-0"><a href="/" style="color: white">Hello, <span class="actio-text"><%= sessionInfo.first_name %></span> ! Welcome to <span class="actio-text">Act.io</span> !</a></button>
+        <% } else { %>
+            <button class="btn btn-info my-2 my-sm-0"><a href="/auth/login" style="color: white">Welcome to <span class="actio-text">Act.io</span>! Please login first</a></button>
+        <% } %>
+    </form>
+    </div>
+</nav>

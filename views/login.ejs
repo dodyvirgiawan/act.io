@@ -1,0 +1,57 @@
+<%- include('partials/head', {pageTitle: 'Login'}) %>
+
+<body>
+    <%- include('partials/navbar', {sessionInfo}) %>
+
+    <br>
+    <div class="text-center">
+        <div class="container actioTitle">
+            <div class="alert" role="alert">
+                <h4>Welcome to <span class="actio-text">Act.io</span> !<br>Please login or register a new account!</h4>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <div class="container">
+        <br>
+        <div class="card">
+            <div class="card body">
+                <div class="container">
+                    <div class="card-deck">
+                            <div class="card-body">
+                                <form class="registerForm" action="/auth/login" method="POST">
+                                    <h4>Login</h4><br>
+                                    <div class="form-group">
+                                        <% if(previousInputs) { %>
+                                            <input type="email" class="form-control" name="email" value="<%= previousInputs %>">
+                                        <% } else { %>
+                                            <input type="email" class="form-control" name="email" placeholder="Enter your email">
+                                        <% } %>
+                                    </div><br>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" name="password" placeholder="Enter your password">
+                                    </div>
+
+                                    <% if(errorValidations.emptyInput) { %>
+                                        <small class="form-text" style="color: rgb(231, 134, 134)">Please input the e-mail and the password</small>
+                                    <% } %>
+
+                                    <% if(errorValidations.wrongCredentials) { %>
+                                        <small class="form-text" style="color: rgb(231, 134, 134)">Wrong email or password credentials</small>
+                                    <% } %>
+
+                                    <% if(errorValidations.notFoundInDb) { %>
+                                        <small class="form-text" style="color: rgb(231, 134, 134)">Email or password not found</small>
+                                    <% } %>
+                                    
+                                    <br><button type="submit" class="btn btn-success" style="color: black">Login</button>&nbsp;&nbsp;or&nbsp;&nbsp;<button class="btn btn-primary"><a href="/auth/register" style="color: white">Create new account</a></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

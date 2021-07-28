@@ -1,0 +1,22 @@
+<%- include('partials/head.ejs', {pageTitle: 'Confirm Logout'}) %>
+<body>
+    <%- include('partials/navbar.ejs'), {sessionInfo} %>
+
+    <br>
+    <div class="text-center">
+        <div class="container">
+            <div class="card">
+                <div class="card body">
+                    <div class="container">
+                        <br>
+                        <div class="alert" role="alert">
+                            <h2>Are you sure you want to logout ?</h2>
+                            <br><br><button class="btn btn-primary" style="color: white;"><a href="/auth/logout/confirm" style="color: white"><b>Yes, I'm sure</b></a></button> <button type="button" class="btn btn-success"><a href="/" style="color: black"><b>Cancel</b></a></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

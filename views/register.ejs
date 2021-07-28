@@ -1,0 +1,127 @@
+<%- include('partials/head', {pageTitle: 'Register'}) %>
+
+<body>
+    <%- include('partials/navbar') %>
+
+    <br>
+    <div class="text-center">
+        <div class="container actioTitle">
+            <div class="alert" role="alert">
+                <h4>What does <span class="actio-text">Act.io</span>  offer?</h4>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <div class="container" id="featureList">
+        <div class="card-deck">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Feature 1</h5>
+                  <p class="card-text">View our current list of production houses partner.</p>
+                  <br><a href="/gettingstarted" class="btn btn-success" style="color: black">Show guide</a>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Feature 2</h5>
+                    <p class="card-text">View our current list of registered movies.</p>
+                    <br><a href="/gettingstarted" class="btn btn-success" style="color: black">Show guide</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br><br>
+    <div class="text-center">
+        <div class="container actioTitle">
+            <div class="alert" role="alert">
+                <h4>What are you waiting for? Let's register!</h4>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <div class="container">
+        <div class="card">
+            <div class="card body">
+                <div class="container">
+                    <div class="card-deck">
+                        <div class="card" style="width: 18rem;" style=>
+                            <div class="card-body">
+                                <div style="margin-top: 30%">
+                                    <img class="card-img-top" src="/img/todo-illustration.jpg" alt="Act.io App">
+                                    <img class="card-img-top" src="/img/todo-illustration2.jpg" alt="Act.io App">
+                                </div>
+                            </div>
+                        </div>
+                            <div class="card-body">
+                                <form class="registerForm" action="/auth/register" method="POST">
+                                    <div class="text-center">
+                                        <h3>Start using Act.io now!</h3>
+                                        <hr>
+                                    </div>
+                                    <br>
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+
+                                        <% if(previousInputs.email) { %>
+                                            <input type="email" class="form-control" name="email" value="<%= previousInputs.email %>">
+                                        <% } else { %>
+                                            <input type="email" class="form-control" name="email" placeholder="Enter your email">
+                                        <% } %>
+
+                                        <%- include('partials/formValidationComponent.ejs', {errorValidations, path: 'email', validatorKey: 'notEmpty'}) %>
+                                        <%- include('partials/formValidationComponent.ejs', {errorValidations, path: 'email', validatorKey: 'isEmail'}) %>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="first_name">First Name</label>
+
+                                        <% if(previousInputs.first_name) { %>
+                                            <input type="test" class="form-control" name="first_name" value="<%= previousInputs.first_name %>">
+                                        <% } else { %>
+                                            <input type="text" class="form-control" name="first_name" placeholder="Enter first name">
+                                        <% } %>
+                                        
+                                        <%- include('partials/formValidationComponent.ejs', {errorValidations, path: 'first_name', validatorKey: 'notEmpty'}) %>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="last_name">Last Name</label>
+
+                                        <% if(previousInputs.last_name) { %>
+                                            <input type="text" class="form-control" name="last_name" value="<%= previousInputs.last_name %>">
+                                        <% } else { %>
+                                            <input type="text" class="form-control" name="last_name" placeholder="Enter last name">
+                                        <% } %>
+                                        
+                                        <%- include('partials/formValidationComponent.ejs', {errorValidations, path: 'last_name', validatorKey: 'notEmpty'}) %>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phone_number">Phone Number</label>
+
+                                        <% if(previousInputs.phone_number) { %>
+                                            <input type="number" class="form-control" name="phone_number" value="<%= previousInputs.phone_number %>">
+                                        <% } else { %>
+                                            <input type="number" class="form-control" name="phone_number" placeholder="Enter your phone number">
+                                        <% } %>
+
+                                        <%- include('partials/formValidationComponent.ejs', {errorValidations, path: 'phone_number', validatorKey: 'notEmpty'}) %>
+                                        <%- include('partials/formValidationComponent.ejs', {errorValidations, path: 'phone_number', validatorKey: 'isNumeric'}) %>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password">Password</label>
+                                        <input type="password" class="form-control" name="password" placeholder="Password">
+
+                                        <%- include('partials/formValidationComponent.ejs', {errorValidations, path: 'password', validatorKey: 'notEmpty'}) %>
+                                    </div>
+                                    <br><button type="submit" class="btn btn-primary" style="color: white">Create new account</button>&nbsp;&nbsp;<button class="btn btn-success" style="color: black"><a href="/auth/login">Cancel</a></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

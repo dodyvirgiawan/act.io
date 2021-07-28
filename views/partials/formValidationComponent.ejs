@@ -1,0 +1,6 @@
+<% if(errorValidations) { %>
+    <% if(errorValidations.find(el => el.path === path && el.validatorKey === validatorKey )) { %>
+        <% const errorItem = errorValidations.find(el => el.path === path && el.validatorKey === validatorKey ) %>
+        <small class="form-text" style="color: rgb(231, 134, 134)" ><%= errorItem.message %></small>
+    <% } %>
+<% } %>

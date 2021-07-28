@@ -1,0 +1,124 @@
+body {
+    background: rgb(255,255,255);
+    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(231,255,255,1) 50%, rgba(255,255,255,1) 100%);
+}
+
+a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+a:hover {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+h2 {
+    color: white;
+}
+
+hr {
+    border-color: white;
+    width: 50%;
+}
+
+input {
+    border-radius: 5px;
+}
+
+form {
+    color: rgb(255, 255, 255);
+}
+
+form label {
+    font-size: larger;
+}
+
+.card {
+    background-color: rgb(92, 105, 112);
+    opacity: 0.97;
+}
+
+.container {
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+#actioNavbar {
+    background-color: rgb(238, 238, 238);
+    border-bottom: 1px solid #e1f6ff;
+}
+
+#actioNavbar .nav-item {
+    color: rgb(0, 0, 0);
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+#actioNavbar .navbar-brand {
+    color: #209CEE;
+    font-family: 'Leckerli One', cursive;
+    font-size: 30px;
+    margin-left: 2%;
+}
+
+.actioTitle {
+    background-color: rgb(45, 56, 61);
+    border-radius: 5px;
+}
+
+.actioTitle h4 {
+    color: white;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+.table {
+    color: white;
+    background-color: rgb(20,20,20);
+}
+
+.table thead{
+    font-size: larger;
+    color: rgb(255, 255, 255);
+    background-color: rgb(20,20,20);
+}
+
+.btn-success {
+    background-color: white;
+    border-color: white;
+}
+
+.btn-success:hover {
+    background-color: rgb(233, 233, 233);
+    border-color: rgb(233, 233, 233);
+}
+
+.btn-danger {
+    background-color: rgb(229, 9, 20);
+}
+
+#featureList .card {
+    opacity: 0.9;
+}
+
+#featureList .card-title {
+    color: rgb(255, 255, 255);
+}
+
+#featureList .card-text {
+    color: white;
+}
+
+.registerForm {
+    background-color: rgb(45, 56, 61); 
+    color: rgb(255, 255, 255); 
+    padding: 5%; 
+    border-radius: 4px
+}
+
+.actio-text {
+    font-size: larger;
+    font-family: 'Leckerli One', cursive;
+}
+
+.actio-paragraph {
+    color: white;
+}
