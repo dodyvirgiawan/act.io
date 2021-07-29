@@ -9,7 +9,14 @@ module.exports = (sequelize, DataTypes) => {
         }
     };
     Label.init({
-        name: DataTypes.STRING
+        name: {
+            type: DataTypes.STRING,
+            validate: {
+                notEmpty: {
+                    msg: 'Please input the label name'
+                }
+            }
+        }
     }, {
         sequelize,
         modelName: 'Label',

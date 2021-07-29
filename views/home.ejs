@@ -73,7 +73,7 @@
     
                                 <div class="form-group">
                                     <label for="reminder_hours">At what time?</label>
-                                    <input type="text" class="form-control" name="reminder_hours" placeholder="Input in HH:MM format (e.g 15:30)">
+                                    <input type="text" class="form-control" name="reminder_hours" placeholder="e.g 15:30">
                                 </div>
 
                                 <%- include('partials/formValidationComponent.ejs', {errorValidations, path: 'reminder_hours', validatorKey: 'notEmpty'}) %>
