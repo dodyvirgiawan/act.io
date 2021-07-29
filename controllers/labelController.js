@@ -2,7 +2,6 @@ const { Label } = require('../models')
 const getErrorItems = require('../helpers/getErrorItems.js')
 
 class LabelController {
-
     static showLabel(req, res) {
         Label.findAll({order: [['id', 'ASC']]})
             .then(data => {

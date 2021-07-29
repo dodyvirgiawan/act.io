@@ -24,16 +24,23 @@
             <% data.forEach(el => { %>
                 <div class="card w-100 todo-card">
                     <div class="card-body">
-                        <h4 class="card-title"><%= el.name %></h4><button type="button" class="btn btn-secondary btn-sm">Priority: <%= el.priority %></button><br><br>
+                        <div class="alert alert-dark" role="alert">
+                            <h4 class="card-title"><%= el.name %></h4>
+                        </div>
+                        <button type="button" class="btn btn-secondary btn-sm">Priority: <%= el.priority %></button><br><br>
                         <p class="card-text"><%= el.description %></p>
-                        <div class="alert alert-danger"><strong>Deadline:</strong> <%= el.showDeadline() %></div>
-                        <div class="alert alert-info"><strong>Reminder:</strong> <%= el.showReminderDate() %></div>
+                        <div class="alert alert-danger" style="width: 60%"><strong>Deadline:</strong> <%= el.showDeadline() %></div>
+                        <div class="alert alert-info" style="width: 60%"><strong>Reminder:</strong> <%= el.showReminderDate() %></div>
                         <a href="/todos/<%= el.id %>/complete" class="btn btn-success" style="color: black">Mark as done</a>
                         <a href="/todos/<%= el.id %>/edit" class="btn btn-primary">Edit</a>
                         <br><br>
-                        <p>Labels: </p><button type="button" class="btn btn-secondary btn-sm">Entertainment</button>&nbsp;&nbsp;<button type="button" class="btn btn-secondary btn-sm">Hobby</button>
+
+                        <p>Labels: </p>
+                        <% el.Labels.forEach(label => { %>
+                            <button type="button" class="btn btn-warning btn-sm"><a href="/todos/<%= el.id %>/deletelabel/<%= label.id %>"><%= label.name %></a></button>
+                        <% }) %>
     
-                        &nbsp;<a href="/todos/<%= el.id %>/addlabel" class="btn btn-success btn-sm" style="color: black">+ Add more label</a>
+                        &nbsp;<a href="/todos/<%= el.id %>/addlabel" class="btn btn-success btn-sm" style="color: black">+ Add label</a>
                     </div>
                 </div><br>
             <% }) %>
