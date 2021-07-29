@@ -1,20 +1,25 @@
 <%- include('partials/head', {pageTitle: 'Add  Label'}) %>
 
 <body>
-<div class="mt-5 container">
-  <div class="w-50 mx-auto">
-    <h1>Add New Label</h1>
-    
+    <%- include('partials/navbar') %>
 
-    <form action="/label/add" method="POST">
-      <div class="form-group">
-        <label for="name">Label Name</label>
-        <input type="text" class="form-control" name="name">
-      </div>
-  
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-  </div>
-</div>
+    <div class="mt-5 container">
+    <div class="w-50 mx-auto">
+        <h1>Add New Label</h1>
+        
+        <br><br>
+        <form action="/label/add" method="POST">
+            <div class="form-group">
+                <label for="name" style="color: black">Label Name</label>
+                <input type="text" class="form-control" name="name">
+
+                <%- include('partials/formValidationComponent.ejs', {errorValidations, path: 'name', validatorKey: 'notEmpty'}) %>
+            </div>
+    
+            <button type="submit" class="btn btn-info" style="color: white">Add</button>
+            <button class="btn btn-success"><a href="/label">Cancel</a></button>
+        </form>
+    </div>
+    </div>
 </body>
 </html>

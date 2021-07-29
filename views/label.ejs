@@ -1,26 +1,30 @@
 <%- include('partials/head', {pageTitle: 'Add  Label'}) %>
 
 <body>
-<div class="mt-5 container">
-  <div class="w-50 mx-auto">
-    <h1>Label List</h1>
+    <%- include('partials/navbar') %>
+
+    <div class="mt-5 container">
+        <div class="w-50 mx-auto">
+        <h1>Label List</h1>
        
-        <table class="table table-info">
-            <thead class="table-info">    
+        <button type="button" class="btn btn-success"><a href="/label/add" style="text-decoration: none; color: black">Add new label</a></button>
+        <br><br>
+        <table class="table table-striped">
+            <thead>    
                 <tr>
-                <th>No</th>
-                <th>Label Name</th>
-                <th>Action</th>
-            </tr>
+                    <th>No</th>
+                    <th>Label Name</th>
+                    <th>Action</th>
+                </tr>
             </thead>
         <tbody>
-        <% data.forEach((el) => { %>
+        <% data.forEach((el, idx) => { %>
         <tr>
-            <td><%= el.id %></td>
+            <td><%= idx + 1 %></td>
             <td><%= el.name  %></td>
-            <td><a href="/label/edit/<%= el.id%>"> <input type="submit" value="Edit Label"></a>
-                <a href="/label/delete/<%= el.id%>"> <input type="submit" value="Delete Label"> </a></td>     
-    
+            <td><button type="button" class="btn btn-info"><a href="/label/edit/<%= el.id%>" style="text-decoration: none; color: white">Edit label</a></button>
+                <button type="button" class="btn btn-danger"><a href="/label/delete/<%= el.id%>" style="text-decoration: none; color: white">Delete</a></button></td>     
+        </tr>
         <% }) %>
         </tbody>
         </table>

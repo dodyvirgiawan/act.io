@@ -72,7 +72,7 @@ module.exports = (sequelize, DataTypes) => {
                     const validHour = /^([0-1][0-9]|2[0-3]):([0-5][0-9])$/.test(value);
 
                     if (!validHour) {
-                        throw new Error('Please input hour in correct format (e.g 15:30)')
+                        throw new Error('Please input hour in HH:MM format (e.g 15:30)')
                     } 
                 }
             }

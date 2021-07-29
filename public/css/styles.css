@@ -70,16 +70,6 @@ form label {
     font-family: 'Noto Sans JP', sans-serif;
 }
 
-.table {
-    color: white;
-    background-color: rgb(20,20,20);
-}
-
-.table thead{
-    font-size: larger;
-    color: rgb(255, 255, 255);
-    background-color: rgb(20,20,20);
-}
 
 .btn-success {
     background-color: white;
