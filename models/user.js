@@ -42,7 +42,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             validate: {
                 notEmpty: {
-                    msg: 'Please input your first name'
+                    msg: 'Please input your e-mail'
                 },
 
                 isEmail: {
