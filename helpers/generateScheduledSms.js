@@ -24,39 +24,22 @@ function generateScheduledSms(instance, phone_number) {
     schedule.scheduleJob('sendsms', timeToSend, () => {
         vonage.message.sendSms(from, to, text, (err, responseData) => {
             //Uncomment this if just want to test the schedule
-            console.log(`From: ${from}\nTo: ${to}\nMessage: ${text}`)
-            schedule.cancelJob('sendsms')
+            // console.log(`From: ${from}\nTo: ${to}\nMessage: ${text}`)
+            // schedule.cancelJob('sendsms')
 
             //Uncomment this to send actual SMS
-            // if (err) {
-            //     console.log(err);
-            // } else {
-            //     if(responseData.messages[0]['status'] === "0") {
-            //         console.log("Message sent successfully.");
-            //     } else {
-            //         console.log(`Message failed with error: ${responseData.messages[0]['error-text']}`);
-            //     }
-            // }
-            // schedule.cancelJob('sendsms') //* Stop the process (make sure to send only once)
+            if (err) {
+                console.log(err);
+            } else {
+                if(responseData.messages[0]['status'] === "0") {
+                    console.log("Message sent successfully.");
+                } else {
+                    console.log(`Message failed with error: ${responseData.messages[0]['error-text']}`);
+                }
+            }
+            schedule.cancelJob('sendsms') //* Stop the process (make sure to send only once)
         })
     })
 }
-
-//* Testing purpose
-// const instance = {
-//     id: 3,
-//     name: 'Create website',
-//     description: 'This is a description',
-//     priority: 'High',
-//     deadline: new Date('2021-07-29T00:00:00.000Z'),
-//     reminder_date: new Date('2021-07-29T00:00:00.000Z'), //* Change this (the date only)
-//     reminder_hours: '22:09', //* Change this
-//     UserId: 1,
-//     updatedAt: new Date('2021-07-29T13:52:24.747Z'),
-//     createdAt: new Date('2021-07-29T13:52:24.747Z'),
-//     is_completed: false
-// }
-
-// generateScheduledSms(instance, '123456789')
 
 module.exports = generateScheduledSms
