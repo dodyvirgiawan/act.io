@@ -1,0 +1,31 @@
+<%- include('partials/head', {pageTitle: 'Home'}) %>
+
+<body>
+    <%- include('partials/navbar') %>
+
+    <br>
+    <div class="container">
+        <div class="card">
+            <div class="card body">
+                <div class="container">
+                    <div class="card-body">
+                        <form action="/todos/<%= todo.id %>/addlabel" method="POST">
+                            <div class="form-group">
+                                <h2><%= todo.name %></h2><br>
+                                <label for="LabelId"><button class="btn btn-info">Labels</button> </label><br>
+                                <select class="form-control form-control-lg" name="LabelId">
+                                    <% labels.forEach(el => { %>
+                                        <option value="<%= el.id %>"><%= el.name %></option>
+                                    <% }) %>
+                                </select>
+                            </div>
+
+                            <br><button type="submit" class="btn btn-primary" style="color: white">Add</button>&nbsp;&nbsp;<button type="button" class="btn btn-success"><a href="/todos" style="color: black">Cancel</a></button>
+                        </form>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>

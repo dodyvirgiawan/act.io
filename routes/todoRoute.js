@@ -10,7 +10,8 @@ router.get('/:id/edit', isLoggedIn, Controller.getEditTodo)
 router.post('/:id/edit', isLoggedIn, Controller.postEditTodo)
 router.get('/:id/delete', isLoggedIn, Controller.deleteTodo)
 router.get('/completed/:id/delete', isLoggedIn, Controller.deleteCompletedTodo)
-// router.get('/:id/addlabel', isLoggedIn, Controller.getAddLabel)
-// router.post('/:id/addlabel', isLoggedIn, Controller.postAddLabel)
+router.get('/:id/addlabel', isLoggedIn, Controller.getAddLabel)
+router.post('/:id/addlabel', isLoggedIn, Controller.postAddLabel)
+router.get('/:id/deletelabel/:labelId', isLoggedIn, Controller.deleteLabel)
 
 module.exports = router

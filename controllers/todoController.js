@@ -1,18 +1,32 @@
-const { Todo } = require('../models')
+const { Todo, Label, TodoLabel } = require('../models')
 const { formatDateToHTMLInput } = require('../helpers/formatDate.js')
 const getErrorItems = require('../helpers/getErrorItems.js')
 const generateScheduledSms = require('../helpers/generateScheduledSms.js')
 
 class TodoController {
     static showUncompletedTodos(req, res) {
-        Todo.findAll({where: {UserId: req.session.userId, is_completed: false}, order: [['deadline', 'ASC']]})
-            .then(data => res.render('todos', {sessionInfo: req.session, data}))
+        Todo.findAll({
+            where: {
+                UserId: req.session.userId, 
+                is_completed: false
+            }, 
+            order: [['deadline', 'ASC']],
+            include: [ Label ]
+        })
+            .then(data =>  res.render('todos', {sessionInfo: req.session, data}))
             .catch(err => res.send(err))
     }
 
     static showCompletedTodos(req, res) { 
-        Todo.findAll({where: {UserId: req.session.userId, is_completed: true}, order: [['updatedAt', 'ASC']]})
+        Todo.findAll({
+            where: {
+                UserId: req.session.userId, 
+                is_completed: true
+            }, 
+            order: [['updatedAt', 'ASC']]
+        })
             .then(data => res.render('completedTodos', {sessionInfo: req.session, data}))
+            .catch(err => res.send(err))
     }
 
     static addTodo(req, res) {
@@ -73,11 +87,29 @@ class TodoController {
     }
 
     static getAddLabel(req, res) {
+        let todo = null
 
+        Todo.findOne({where: {id: req.params.id}})
+            .then(data => {
+                todo = data
+                return Label.findAll()
+            })
+            .then(labels => {
+                res.render('assignlabel', {sessionInfo: req.session, todo, labels})
+            })
+            .catch(err => res.send(err))
     }
 
     static postAddLabel(req, res) {
-        
+        TodoLabel.create({TodoId: req.params.id, LabelId: req.body.LabelId})
+            .then(() => res.redirect('/todos'))
+            .catch(err => res.send(err))
+    }
+
+    static deleteLabel(req, res) {
+        TodoLabel.destroy({where: {TodoId: req.params.id, LabelId: req.params.labelId}})
+            .then(() => res.redirect('/todos'))
+            .catch(err => res.send(err))
     }
 }
 
