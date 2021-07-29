@@ -23,16 +23,21 @@ function generateScheduledSms(instance, phone_number) {
     //* Process
     schedule.scheduleJob('sendsms', timeToSend, () => {
         vonage.message.sendSms(from, to, text, (err, responseData) => {
-            if (err) {
-                console.log(err);
-            } else {
-                if(responseData.messages[0]['status'] === "0") {
-                    console.log("Message sent successfully.");
-                } else {
-                    console.log(`Message failed with error: ${responseData.messages[0]['error-text']}`);
-                }
-            }
-            schedule.cancelJob('sendsms') //* Stop the process (make sure to send only once)
+            //Uncomment this if just want to test the schedule
+            console.log(`From: ${from}\nTo: ${to}\nMessage: ${text}`)
+            schedule.cancelJob('sendsms')
+
+            //Uncomment this to send actual SMS
+            // if (err) {
+            //     console.log(err);
+            // } else {
+            //     if(responseData.messages[0]['status'] === "0") {
+            //         console.log("Message sent successfully.");
+            //     } else {
+            //         console.log(`Message failed with error: ${responseData.messages[0]['error-text']}`);
+            //     }
+            // }
+            // schedule.cancelJob('sendsms') //* Stop the process (make sure to send only once)
         })
     })
 }

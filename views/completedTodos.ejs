@@ -31,7 +31,7 @@
                     <% if(el.Labels.length > 0) { %>
                         <p>Labels: </p>
                         <% el.Labels.forEach(label => { %>
-                            <button type="button" class="btn btn-secondary btn-sm"><a href="/todos/<%= el.id %>/deletelabel/<%= label.id %>" style="color: white"><%= label.name %></a></button>
+                            <button type="button" class="btn btn-secondary btn-sm" style="color: white"><%= label.name %></button>
                         <% }) %>
                     <% } %>
                 </div>
