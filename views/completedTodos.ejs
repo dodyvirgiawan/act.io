@@ -27,7 +27,13 @@
                     <p class="card-text"><%= el.description %></p>
                     <div class="alert alert-info"><strong>Completed On:</strong> <%= el.updatedAt %></div>
                     <button type="button" class="btn btn-warning btn-sm"><a href="/todos/completed/<%= el.id %>/delete">Delete this record</a></button><br><br>
-                    <p>Labels: </p><button type="button" class="btn btn-secondary btn-sm">Entertainment</button>&nbsp;&nbsp;<button type="button" class="btn btn-secondary btn-sm">Hobby</button>
+                    
+                    <% if(el.Labels.length > 0) { %>
+                        <p>Labels: </p>
+                        <% el.Labels.forEach(label => { %>
+                            <button type="button" class="btn btn-secondary btn-sm"><a href="/todos/<%= el.id %>/deletelabel/<%= label.id %>" style="color: white"><%= label.name %></a></button>
+                        <% }) %>
+                    <% } %>
                 </div>
             </div><br>
         <% }) %>
