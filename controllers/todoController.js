@@ -1,6 +1,7 @@
 const { Todo } = require('../models')
-const getErrorItems = require('../helpers/getErrorItems.js')
 const { formatDateToHTMLInput } = require('../helpers/formatDate.js')
+const getErrorItems = require('../helpers/getErrorItems.js')
+const generateScheduledSms = require('../helpers/generateScheduledSms.js')
 
 class TodoController {
     static showUncompletedTodos(req, res) {
@@ -18,8 +19,11 @@ class TodoController {
         const {name, description, priority, deadline, reminder_date, reminder_hours} = req.body
         const UserId = req.session.userId
 
-        Todo.create({name, description, priority, deadline, reminder_date, reminder_hours, UserId}) //! Hooks afterCreate cronjob
-            .then(() => res.redirect('/todos'))
+        Todo.create({name, description, priority, deadline, reminder_date, reminder_hours, UserId})
+            .then(data => {
+                generateScheduledSms(data, req.session.phone_number)
+                res.redirect('/todos')
+            })
             .catch(err => {
                 const errors = getErrorItems(err.errors)
                 res.redirect(`/?errors=${JSON.stringify(errors)}`)
