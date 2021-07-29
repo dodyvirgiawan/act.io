@@ -1,0 +1,48 @@
+<%- include('partials/head', {pageTitle: 'Home'}) %>
+
+<body>
+    <%- include('partials/navbar') %>
+
+    <br>
+    <div class="text-center">
+        <div class="container actioTitle">
+            <div class="alert" role="alert">
+                <h4><span class="actio-text"><%= sessionInfo.first_name %></span>'s to do list</h4>
+            </div>
+        </div>
+    </div>
+    
+    <div class="text-center">
+        <div class="container">
+            <a href="/todos/completed" class="btn btn-dark">Show my completed todo list</a>
+        </div>
+        <br>
+    </div>
+
+    <div class="container">
+        <% if(data.length > 0) { %>
+            <% data.forEach(el => { %>
+                <div class="card w-100 todo-card">
+                    <div class="card-body">
+                        <h4 class="card-title"><%= el.name %></h4><button type="button" class="btn btn-secondary btn-sm">Priority: <%= el.priority %></button><br><br>
+                        <p class="card-text"><%= el.description %></p>
+                        <div class="alert alert-danger"><strong>Deadline:</strong> <%= el.showDeadline() %></div>
+                        <div class="alert alert-info"><strong>Reminder:</strong> <%= el.showReminderDate() %></div>
+                        <a href="/todos/<%= el.id %>/complete" class="btn btn-success" style="color: black">Mark as done</a>
+                        <a href="/todos/<%= el.id %>/edit" class="btn btn-primary">Edit</a>
+                        <br><br>
+                        <p>Labels: </p><button type="button" class="btn btn-secondary btn-sm">Entertainment</button>&nbsp;&nbsp;<button type="button" class="btn btn-secondary btn-sm">Hobby</button>
+    
+                        &nbsp;<a href="/todos/<%= el.id %>/addlabel" class="btn btn-success btn-sm" style="color: black">+ Add more label</a>
+                    </div>
+                </div><br>
+            <% }) %>
+        <% } else { %>
+            <div class="text-center">
+                <div class="container">
+                    <a href="/" class="btn btn-warning btn-lg" style="color: black">You don't have any active todos, start adding one!</a>
+                </div>
+            </div>
+        <% } %>
+    </div> 
+</body>

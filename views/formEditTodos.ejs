@@ -4,39 +4,30 @@
     <%- include('partials/navbar') %>
 
     <br>
-    <div class="text-center">
-        <div class="container actioTitle">
-            <div class="alert" role="alert">
-                <h4>Welcome <span class="actio-text"><%= sessionInfo.first_name %></span> ! Start adding your <span class="actio-text">to-do</span> list</h4>
-            </div>
-        </div>
-    </div>
-
-    <br>
     <div class="container">
         <div class="card">
             <div class="card body">
                 <div class="container">
                     <div class="card-body">
-                        <form action="/todos/add" method="POST">
+                        <form action="/todos/<%= data.id %>/edit" method="POST">
                             <div class="form-group">
-                                <label for="name">To do</label>
-                                <input type="text" class="form-control" name="name" placeholder="e.g Go to the supermarket">
+                                <label for="name">Edit To do</label>
+                                <input type="text" class="form-control" name="name" value="<%= data.name %>">
                             </div>
 
                             <%- include('partials/formValidationComponent.ejs', {errorValidations, path: 'name', validatorKey: 'notEmpty'}) %>
 
                             <div class="form-group">
                                 <label for="description">Description <small><i>(optional)</i></small></label>
-                                <textarea class="form-control" name="description" rows="3" placeholder="e.g. Buy shampoo, snacks and drinks"></textarea>
+                                <textarea class="form-control" name="description" rows="3"><%= data.description %></textarea>
                             </div>
 
                             <div class="form-group">
                                 <label for="priority">Priority</label>
                                 <select class="form-control form-control-lg" name="priority">
-                                    <option value="High">High</option>
-                                    <option value="Medium">Medium</option>
-                                    <option value="Low">Low</option>
+                                    <option value="High" <%= data.priority === 'High' ? 'selected' : '' %>>High</option>
+                                    <option value="Medium" <%= data.priority === 'Medium' ? 'selected' : '' %>>Medium</option>
+                                    <option value="Low" <%= data.priority === 'Low' ? 'selected' : '' %>>Low</option>
                                 </select>
                             </div>
 
@@ -57,7 +48,7 @@
                             <div class="alert alert-danger">
                                 <div class="form-group">
                                     <label for="deadline">Deadline</label>
-                                    <input type="date" class="form-control" name="deadline">
+                                    <input type="date" class="form-control" name="deadline" value="<%= formatDateToHTMLInput(data.deadline) %>">
                                 </div>
                             </div>
 
@@ -66,21 +57,21 @@
                             <br><div class="alert alert-info">
                                 <div class="form-group">
                                     <label for="reminder_date">When do you want us to send a reminder?</label>
-                                    <input type="date" class="form-control" name="reminder_date">
+                                    <input type="date" class="form-control" name="reminder_date" value="<%= formatDateToHTMLInput(data.reminder_date) %>">
                                 </div>
 
                                 <%- include('partials/formValidationComponent.ejs', {errorValidations, path: 'reminder_date', validatorKey: 'notEmpty'}) %>
     
                                 <div class="form-group">
                                     <label for="reminder_hours">At what time?</label>
-                                    <input type="text" class="form-control" name="reminder_hours" placeholder="Input in HH:MM format (e.g 15:30)">
+                                    <input type="text" class="form-control" name="reminder_hours" value="<%= data.reminder_hours %>"">
                                 </div>
 
                                 <%- include('partials/formValidationComponent.ejs', {errorValidations, path: 'reminder_hours', validatorKey: 'notEmpty'}) %>
                                 <%- include('partials/formValidationComponent.ejs', {errorValidations, path: 'reminder_hours', validatorKey: 'isValidHour'}) %>
 
                             </div>
-                            <br><button type="submit" class="btn btn-primary" style="color: white">Add to my list</button></button>
+                            <br><button type="submit" class="btn btn-primary" style="color: white">Save</button>&nbsp;&nbsp;<button type="submit" class="btn btn-danger"><a href="/todos/<%= data.id %>/delete" style="color: white">Delete</a></button>&nbsp;&nbsp;<button type="button" class="btn btn-success"><a href="/todos" style="color: black">Cancel</a></button>
                         </form>
 
                     </div>
