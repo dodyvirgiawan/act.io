@@ -1,7 +1,7 @@
 'use strict';
 
 const { Model } = require('sequelize');
-const { formatDate } = require('../helpers/formatDate.js')
+const { formatDate } = require('../helpers/formatDate.js');
 
 module.exports = (sequelize, DataTypes) => {
     class Todo extends Model {
@@ -82,7 +82,7 @@ module.exports = (sequelize, DataTypes) => {
         hooks: {
             beforeCreate(instance) {
                 instance.is_completed = false
-            }
+            },
         },
         sequelize,
         modelName: 'Todo',
