@@ -1,0 +1,28 @@
+<%- include('partials/head', {pageTitle: 'Add  Label'}) %>
+
+<body>
+<div class="mt-5 container">
+  <div class="w-50 mx-auto">
+    <h1>Label List</h1>
+       
+        <table class="table table-info">
+            <thead class="table-info">    
+                <tr>
+                <th>No</th>
+                <th>Label Name</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+        <tbody>
+        <% data.forEach((el) => { %>
+        <tr>
+            <td><%= el.id %></td>
+            <td><%= el.name  %></td>
+            <td><a href="/label/edit/<%= el.id%>"> <input type="submit" value="Edit Label"></a>
+                <a href="/label/delete/<%= el.id%>"> <input type="submit" value="Delete Label"> </a></td>     
+    
+        <% }) %>
+        </tbody>
+        </table>
+</body>
+</html>
