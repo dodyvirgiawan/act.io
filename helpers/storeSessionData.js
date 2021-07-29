@@ -5,9 +5,9 @@ function storeSessionData(req, data) {
 }
 
 function deleteSessionData(req) {
-    req.session.isLoggedIn = undefined
-    req.session.userId = undefined
-    req.session.first_name = undefined
+    delete req.session.isLoggedIn
+    delete req.session.userId
+    delete req.session.first_name
 }
 
 module.exports = { storeSessionData, deleteSessionData}
