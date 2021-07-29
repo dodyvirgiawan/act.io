@@ -1,6 +1,8 @@
 const { User } = require('../models')
 const { comparePassword } = require('../helpers/passwordAuth.js')
 const { storeSessionData, deleteSessionData } = require('../helpers/storeSessionData.js')
+const getGreetingMessage = require('../helpers/getGreetingMessage.js')
+const getErrorItems = require('../helpers/getErrorItems.js')
 
 class AuthController {
     static getRegister(req, res) {
@@ -12,7 +14,7 @@ class AuthController {
             previousInputs = JSON.parse(req.query.inputs)
         }
 
-        res.render('register', {sessionInfo: req.session, errorValidations, previousInputs})
+        res.render('register', {sessionInfo: req.session, errorValidations, previousInputs, getGreetingMessage})
     }
 
     static postRegister(req, res) {
@@ -24,7 +26,7 @@ class AuthController {
                 res.redirect('/')
             })
             .catch(err => {
-                const errors = AuthController.getErrorItems(err.errors)
+                const errors = getErrorItems(err.errors)
                 res.redirect(`/auth/register?errors=${JSON.stringify(errors)}&inputs=${JSON.stringify({email, first_name, last_name, phone_number})}`)
             })
     }
@@ -38,7 +40,7 @@ class AuthController {
             previousInputs = JSON.parse(req.query.inputs)
         }
 
-        res.render('login', {sessionInfo: req.session, errorValidations, previousInputs})
+        res.render('login', {sessionInfo: req.session, errorValidations, previousInputs, getGreetingMessage})
     }
 
     static postLogin(req, res) {
@@ -71,20 +73,6 @@ class AuthController {
     static confirmLogoutUser(req, res) {
         deleteSessionData(req)
         res.redirect('/')
-    }
-
-    static getErrorItems(errorInstances) { //* Only send key => message, path and validator key to the query
-        let errors = []
-
-        errorInstances.forEach(el => {
-            errors.push({
-                message: el.message,
-                path: el.path,
-                validatorKey: el.validatorKey
-            })
-        })
-
-        return errors
     }
 }
 

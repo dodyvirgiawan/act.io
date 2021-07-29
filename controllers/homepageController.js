@@ -1,6 +1,12 @@
 class HomepageController {
     static showHomepage(req, res) {
-        res.render('home', {sessionInfo: req.session})
+        let errorValidations = null
+
+        if(req.query.errors) {
+            errorValidations = JSON.parse(req.query.errors)
+        }
+        
+        res.render('home', {sessionInfo: req.session, errorValidations})
     }
 }
 

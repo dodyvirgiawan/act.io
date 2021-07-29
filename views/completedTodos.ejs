@@ -1,0 +1,35 @@
+<%- include('partials/head', {pageTitle: 'Home'}) %>
+
+<body>
+    <%- include('partials/navbar') %>
+
+    <br>
+    <div class="text-center">
+        <div class="container actioTitle">
+            <div class="alert" role="alert">
+                <h4><span class="actio-text"><%= sessionInfo.first_name %></span>'s completed to do list</h4>
+            </div>
+        </div>
+    </div>
+    
+    <div class="text-center">
+        <div class="container">
+            <a href="/todos" class="btn btn-dark">Show my current todo list</a>
+        </div>
+        <br>
+    </div>
+
+    <div class="container">
+        <% data.forEach(el => { %>
+            <div class="card w-100 todo-card">
+                <div class="card-body">
+                    <h4 class="card-title"><%= el.name %></h4>
+                    <p class="card-text"><%= el.description %></p>
+                    <div class="alert alert-info"><strong>Completed On:</strong> <%= el.updatedAt %></div>
+                    <button type="button" class="btn btn-warning btn-sm"><a href="/todos/completed/<%= el.id %>/delete">Delete this record</a></button><br><br>
+                    <p>Labels: </p><button type="button" class="btn btn-secondary btn-sm">Entertainment</button>&nbsp;&nbsp;<button type="button" class="btn btn-secondary btn-sm">Hobby</button>
+                </div>
+            </div><br>
+        <% }) %>
+    </div>
+</body>
