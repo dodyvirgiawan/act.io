@@ -23,7 +23,8 @@ class TodoController {
                 UserId: req.session.userId, 
                 is_completed: true
             }, 
-            order: [['updatedAt', 'ASC']]
+            order: [['updatedAt', 'ASC']],
+            include: [ Label ]
         })
             .then(data => res.render('completedTodos', {sessionInfo: req.session, data}))
             .catch(err => res.send(err))
