@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const Controller = require('../controllers/todoController.js')
-const isLoggedIn = require('../helpers/isLoggedIn.js')
+const isLoggedIn = require('../middleware/isLoggedIn.js')
 
 router.get('/', isLoggedIn, Controller.showUncompletedTodos)
 router.get('/completed', isLoggedIn, Controller.showCompletedTodos)
