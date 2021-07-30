@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const LabelController = require('../controllers/labelController')
-const isLoggedIn = require('../helpers/isLoggedIn.js')
+const isLoggedIn = require('../middleware/isLoggedIn.js')
 
 router.get('/', isLoggedIn, LabelController.showLabel)
 router.get('/add', isLoggedIn, LabelController.getAddLabel)

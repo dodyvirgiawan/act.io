@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const Controller = require('../controllers/authController.js')
-const isLoggedIn = require('../helpers/isLoggedIn.js')
+const isLoggedIn = require('../middleware/isLoggedIn.js')
 
 router.get('/register', Controller.getRegister)
 router.post('/register', Controller.postRegister)
