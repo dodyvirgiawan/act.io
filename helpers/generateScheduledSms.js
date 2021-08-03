@@ -4,8 +4,8 @@ const { formatDate, formatDateToHTMLInput } = require('./formatDate.js')
 
 //* Init vonage
 const vonage = new Vonage({
-    apiKey: "6c4eddbe",
-    apiSecret: "9oDtuvSg7aoAN2IG"
+    apiKey: process.env.VONAGE_API_KEY,
+    apiSecret: process.env.VONAGE_API_SECRET
 })
 
 function generateScheduledSms(instance, phone_number) {
