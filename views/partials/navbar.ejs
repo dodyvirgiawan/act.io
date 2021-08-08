@@ -5,32 +5,32 @@
     <a class="navbar-brand" href="#">Act.io</a>
 
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <% if(!sessionInfo.isLoggedIn) { %>
-            <li class="nav-item">
-                <a class="nav-link" href="/gettingstarted">What is <span class="actio-text">Act.io</span>?</a>
-            </li>
-        <% } else { %>
-            <li class="nav-item">
-                <a class="nav-link" href="/">Add Todos</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/todos">My Todos</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/label">Labels</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/auth/logout">Logout</a>
-            </li>
-        <% } %>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-        <% if(sessionInfo.isLoggedIn) { %>
-            <button class="btn btn-info my-2 my-sm-0"><a href="/" style="color: white">Hi <%= sessionInfo.first_name %>! Welcome to <span class="actio-text">Act.io</span>!</a></button>
-        <% } else { %>
-            <button class="btn btn-info my-2 my-sm-0"><a href="/auth/login" style="color: white">Good <%= getGreetingMessage() %>! Please login to start using <span class="actio-text">Act.io</span>!</a></button>
-        <% } %>
-    </form>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <% if(!sessionInfo.isLoggedIn) { %>
+                <li class="nav-item">
+                    <a class="nav-link" href="/gettingstarted">What is <span class="actio-text">Act.io</span>?</a>
+                </li>
+            <% } else { %>
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Add Todos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/todos">My Todos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/label">Labels</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/auth/logout">Logout</a>
+                </li>
+            <% } %>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <% if(sessionInfo.isLoggedIn) { %>
+                <button class="btn btn-info my-2 my-sm-0"><a href="/" style="color: white">Hi <%= sessionInfo.first_name %>! Welcome to <span class="actio-text">Act.io</span>!</a></button>
+            <% } else { %>
+                <button class="btn btn-info my-2 my-sm-0"><a href="/auth/login" style="color: white">Good <%= getGreetingMessage() %>! Please login to start using <span class="actio-text">Act.io</span>!</a></button>
+            <% } %>
+        </form>
     </div>
 </nav>
