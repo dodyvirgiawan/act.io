@@ -1,17 +1,21 @@
 {
   "name": "act.io",
   "version": "1.0.0",
-  "description": "\"Simple to do list app built with Express and Sequelize with PostgreSQL\"",
+  "engines": {
+    "node": "14.17"
+  },
+  "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dodyvirgiawan/act.io.git"
   },
-  "author": "Dody Virgiawan & Bernhard Winner",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/dodyvirgiawan/act.io/issues"
@@ -27,10 +31,5 @@
     "node-schedule": "^2.0.0",
     "pg": "^8.7.1",
     "sequelize": "^6.6.5"
-  },
-  "keywords": [],
-  "devDependencies": {
-    "nodemon": "^2.0.12",
-    "sequelize-cli": "^6.2.0"
   }
 }
