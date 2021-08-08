@@ -4,6 +4,7 @@ Act.io, a simple to-do list app. Built with express framework, with PostgreSQL a
 - **MVP**: User is able to set a reminder for their to do list in the desired date and time. Act.io will then send the reminder via SMS to user's registered phone number.
 
 - Third party API used is **Vonage API**, combined with **node-schedule** package from npm.
+- Templating engine used is EJS, combined with bootstrap framework.
 
 # Demo
 https://actio-todo.herokuapp.com/
